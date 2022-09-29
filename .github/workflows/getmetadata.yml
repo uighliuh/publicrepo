@@ -1,0 +1,12 @@
+name: get package metadata and version metadata
+on:
+  push:
+   
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: curl to get package metadata using github token
+        run:  curl --header "Authorization:Bearer ${{ secrets.GITHUB_TOKEN }}" --location --request GET "https://nuget.pkg.github.com/sldfkjafsdfd/testnuget/index.json"
+      - name: curl to get package version metadata using github token
+        run:  curl --header "Authorization:Bearer ${{ secrets.GITHUB_TOKEN }}" --location --request GET "https://nuget.pkg.github.com/sldfkjafsdfd/testnuget/4.8.0.json"
